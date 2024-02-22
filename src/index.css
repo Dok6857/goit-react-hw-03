@@ -21,12 +21,13 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 0;
-  color: #FCF9F9;
+  color: black;
 }
 
 p {
   margin-top: 0;
   margin-bottom: 0;
+  font-size: 20px;
 }
 
 img {
@@ -58,7 +59,7 @@ fieldset {
 
 body {
   background: #fff;
-  color: #1B1B1B;
+  color: #1b1b1b;
   font-family: var(--primary-font-family);
 }
 
