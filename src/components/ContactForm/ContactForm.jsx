@@ -11,10 +11,7 @@ export const ContactForm = ({ setSomeContacts }) => {
       .max(50, 'Too Long!')
       .required('Required'),
     number: Yup.string()
-      .matches(
-        /^\d{3}-\d{2}-\d{2}$/,
-        'Invalid phone number format (should be 111-22-33)'
-      )
+      .matches(/^\d{3}-\d{2}-\d{2}$/, 'Invalid format (should be 111-22-33)')
       .required('Required'),
   });
   const nameFieldID = useId();
@@ -45,23 +42,27 @@ export const ContactForm = ({ setSomeContacts }) => {
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
-        <label htmlFor={nameFieldID}>Name</label>
-        <Field
-          className={css.inputFields}
-          id={nameFieldID}
-          type="text"
-          name="name"
-        ></Field>
-        <ErrorMessage name="name" as="span" />
+        <label htmlFor={nameFieldID}>
+          Name
+          <Field
+            className={css.inputFields}
+            id={nameFieldID}
+            type="text"
+            name="name"
+          ></Field>
+          <ErrorMessage className={css.error} name="name" component="span" />
+        </label>
 
-        <label htmlFor={numberFieldID}>Number</label>
-        <Field
-          className={css.inputFields}
-          id={numberFieldID}
-          type="tel"
-          name="number"
-        ></Field>
-        <ErrorMessage className={css.error} name="number" as="span" />
+        <label htmlFor={numberFieldID}>
+          Number
+          <Field
+            className={css.inputFields}
+            id={numberFieldID}
+            type="tel"
+            name="number"
+          ></Field>
+          <ErrorMessage className={css.error} name="number" component="span" />
+        </label>
 
         <button type="submit">Add contact</button>
       </Form>
