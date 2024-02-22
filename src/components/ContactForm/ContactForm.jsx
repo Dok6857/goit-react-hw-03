@@ -1,17 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { useState } from 'react';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
 
 export const ContactForm = ({ setSomeContacts }) => {
-  const [contactData, setContactData] = useState({
-    id: '',
-    name: '',
-    number: '',
-  });
-
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, 'Too Short!')
@@ -43,7 +36,11 @@ export const ContactForm = ({ setSomeContacts }) => {
 
   return (
     <Formik
-      initialValues={contactData}
+      initialValues={{
+        id: '',
+        name: '',
+        number: '',
+      }}
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
