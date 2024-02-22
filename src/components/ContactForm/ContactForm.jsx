@@ -47,14 +47,24 @@ export const ContactForm = ({ setSomeContacts }) => {
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
-      <Form>
+      <Form className={css.form}>
         <label htmlFor={nameFieldID}>Name</label>
-        <Field id={nameFieldID} type="text" name="name"></Field>
-        <ErrorMessage className={css.errorMessage} name="name" as="span" />
+        <Field
+          className={css.inputFields}
+          id={nameFieldID}
+          type="text"
+          name="name"
+        ></Field>
+        <ErrorMessage name="name" as="span" />
 
         <label htmlFor={numberFieldID}>Number</label>
-        <Field id={numberFieldID} type="tel" name="number"></Field>
-        <ErrorMessage className={css.errorMessage} name="number" as="span" />
+        <Field
+          className={css.inputFields}
+          id={numberFieldID}
+          type="tel"
+          name="number"
+        ></Field>
+        <ErrorMessage className={css.error} name="number" as="span" />
 
         <button type="submit">Add contact</button>
       </Form>
