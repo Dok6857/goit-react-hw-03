@@ -7,7 +7,7 @@ import { SearchBox } from './SearchBox/SearchBox';
 export function App() {
   const storedContacts = window.localStorage.getItem('someContacts');
 
-  const [someContacts, setSomeContacts] = useState(
+  const [contacts, setContacts] = useState(
     storedContacts
       ? JSON.parse(storedContacts)
       : [
@@ -19,8 +19,8 @@ export function App() {
   );
 
   useEffect(() => {
-    window.localStorage.setItem('someContacts', JSON.stringify(someContacts));
-  }, [someContacts]);
+    window.localStorage.setItem('someContacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   const [filter, setFilter] = useState('');
 
@@ -28,18 +28,27 @@ export function App() {
     setFilter(newFilter);
   };
 
-  const filteredContacts = someContacts.filter(someContact =>
+  const filteredContacts = contacts.filter(someContact =>
     someContact.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+  const handleDelete = evt => {
+    const idToDelete = evt.target.id;
+
+    setContacts(prevContacts => {
+      return prevContacts.filter(contact => contact.id !== idToDelete);
+    });
+  };
 
   return (
     <div className="container">
       <h1>Phonebook</h1>
-      <ContactForm setSomeContacts={setSomeContacts} />
+      <ContactForm onAddContact={setContacts} />
       <SearchBox value={filter} onChange={handleFilterChange} />
       <ContactList
-        someContacts={filteredContacts}
-        setSomeContacts={setSomeContacts}
+        contacts={filteredContacts}
+        setContacts={setContacts}
+        onDelete={handleDelete}
       />
     </div>
   );

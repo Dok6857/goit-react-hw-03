@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import { nanoid } from 'nanoid';
 
-export const ContactForm = ({ setSomeContacts }) => {
+export const ContactForm = ({ onAddContact }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, 'Too Short!')
@@ -26,7 +26,7 @@ export const ContactForm = ({ setSomeContacts }) => {
       number: values.number,
     };
 
-    setSomeContacts(prevContacts => [...prevContacts, newContact]);
+    onAddContact(prevContacts => [...prevContacts, newContact]);
 
     actions.resetForm();
   };

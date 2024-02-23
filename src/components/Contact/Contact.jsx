@@ -2,33 +2,25 @@ import css from './Contact.module.css';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa6';
 
-export const Contact = ({ someContact, setSomeContacts }) => {
-  const handleDelete = evt => {
-    const idToDelete = evt.target.id;
-
-    setSomeContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== idToDelete)
-    );
-  };
-
+export const Contact = ({ contact, onDelete }) => {
   return (
     <li className={css.listItem}>
       <div className={css.test}>
         <div className={css.contactInfo}>
           <FaUser size={24} />
-          <p>{someContact.name}</p>
+          <p>{contact.name}</p>
         </div>
 
         <div className={css.phoneInfo}>
           <FaPhoneAlt size={24} />
-          <p>{someContact.number}</p>
+          <p>{contact.number}</p>
         </div>
       </div>
 
       <button
-        id={someContact.id}
+        id={contact.id}
         type="button"
-        onClick={handleDelete}
+        onClick={onDelete}
         className={css.deleteButton}
       >
         Delete
