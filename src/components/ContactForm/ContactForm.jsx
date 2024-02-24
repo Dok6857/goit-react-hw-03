@@ -27,7 +27,7 @@ export const ContactForm = ({ onAddContact }) => {
       number: values.number,
     };
 
-    onAddContact(prevContacts => [...prevContacts, newContact]);
+    onAddContact(newContact);
 
     actions.resetForm();
   };
