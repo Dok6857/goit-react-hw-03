@@ -32,12 +32,10 @@ export function App() {
     someContact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  const handleDelete = evt => {
-    const idToDelete = evt.target.id;
-
-    setContacts(prevContacts => {
-      return prevContacts.filter(contact => contact.id !== idToDelete);
-    });
+  const handleDelete = idToDelete => {
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== idToDelete)
+    );
   };
 
   return (

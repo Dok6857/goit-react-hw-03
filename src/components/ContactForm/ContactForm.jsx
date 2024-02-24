@@ -7,11 +7,12 @@ import { nanoid } from 'nanoid';
 export const ContactForm = ({ onAddContact }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
-      .min(2, 'Too Short!')
+      .min(3, 'Too Short!')
       .max(50, 'Too Long!')
       .required('Required'),
     number: Yup.string()
-      .matches(/^\d{3}-\d{2}-\d{2}$/, 'Invalid format (should be 111-22-33)')
+      .min(9, 'Please try again (example: 111-22-33)')
+      .max(9, 'Please try again (example: 111-22-33)')
       .required('Required'),
   });
   const nameFieldID = useId();

@@ -3,6 +3,8 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa6';
 
 export const Contact = ({ contact, onDelete }) => {
+
+
   return (
     <li className={css.listItem}>
       <div className={css.test}>
